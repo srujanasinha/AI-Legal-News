@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}AI Legal Tracker &mdash; Latest{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <h2>Latest AI + Legal News</h2>
+    <p class="subtitle">Aggregated daily from {{ source_count }} sources across {{ categories|length }} categories.</p>
+</section>
+
+{% for date_str, articles in date_groups %}
+<section class="date-group">
+    <div class="date-heading">
+        <h3>{{ date_str }}</h3>
+        <span class="date-count">{{ articles|length }} article{{ 's' if articles|length != 1 else '' }}</span>
+    </div>
+    <div class="article-list">
+        {% for article in articles %}
+        <article class="article-card">
+            <div class="article-meta">
+                <span class="article-source">{{ article.source }}</span>
+                <span class="tag tag-{{ article.category }}">
+                    {{ categories.get(article.category, {}).get('label', article.category) }}
+                </span>
+            </div>
+            <h4 class="article-title">
+                <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+                    {{ article.title }}
+                </a>
+            </h4>
+            <p class="article-summary">{{ article.summary }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endfor %}
+
+{% if not date_groups %}
+<section class="empty-state">
+    <div class="empty-icon">&#128240;</div>
+    <h3>No articles found</h3>
+    <p>Check back soon &mdash; feeds are updated daily at 06:17 UTC.</p>
+</section>
+{% endif %}
+{% endblock %}

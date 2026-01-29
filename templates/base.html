@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Legal Tracker{% endblock %}</title>
+    <meta name="description" content="Daily aggregated news from the intersection of artificial intelligence and law.">
+    <meta property="og:title" content="AI Legal Tracker">
+    <meta property="og:description" content="Daily aggregated news covering AI regulation, litigation, policy, and ethics.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="/" class="site-logo">
+                    <div class="logo-icon">&#9878;</div>
+                    <div class="logo-text">
+                        <h1>AI Legal Tracker</h1>
+                        <span class="tagline">Monitoring the AI + Law landscape</span>
+                    </div>
+                </a>
+                <div class="header-stats">
+                    <span class="stat">{{ total_articles }} articles</span>
+                    <span class="stat-sep">&middot;</span>
+                    <span class="stat">{{ source_count }} sources</span>
+                    <span class="stat-sep">&middot;</span>
+                    <span class="stat">{{ categories|length }} categories</span>
+                </div>
+            </div>
+            <nav class="category-nav">
+                <a href="/" class="nav-pill {% if active_page == 'home' %}active{% endif %}">All</a>
+                {% for key, cat in categories.items() %}
+                <a href="/category/{{ key }}.html" class="nav-pill {% if active_page == key %}active{% endif %}">
+                    {{ cat.label }}
+                    {% if category_counts.get(key) %}<span class="pill-count">{{ category_counts[key] }}</span>{% endif %}
+                </a>
+                {% endfor %}
+                <a href="/archive.html" class="nav-pill {% if active_page == 'archive' %}active{% endif %}">Archive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="footer-brand">AI Legal Tracker</p>
+            <p>Last updated: {{ build_time }}</p>
+            <p>{{ total_articles }} articles from {{ source_count }} sources &middot; Updated daily via GitHub Actions</p>
+            <p class="footer-note">All content belongs to original publishers. Links open original sources.</p>
+        </div>
+    </footer>
+</body>
+</html>

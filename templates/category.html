@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ category.label }} &mdash; AI Legal Tracker{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <div class="category-header">
+        <span class="tag tag-{{ category_key }} tag-lg">{{ category.label }}</span>
+        <h2>{{ category.label }}</h2>
+    </div>
+    <p class="subtitle">{{ category.description }}</p>
+    <p class="article-count">{{ total_articles }} article{{ 's' if total_articles != 1 else '' }} in this category</p>
+</section>
+
+{% for date_str, articles in date_groups %}
+<section class="date-group">
+    <div class="date-heading">
+        <h3>{{ date_str }}</h3>
+        <span class="date-count">{{ articles|length }} article{{ 's' if articles|length != 1 else '' }}</span>
+    </div>
+    <div class="article-list">
+        {% for article in articles %}
+        <article class="article-card">
+            <div class="article-meta">
+                <span class="article-source">{{ article.source }}</span>
+            </div>
+            <h4 class="article-title">
+                <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+                    {{ article.title }}
+                </a>
+            </h4>
+            <p class="article-summary">{{ article.summary }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endfor %}
+
+{% if not date_groups %}
+<section class="empty-state">
+    <div class="empty-icon">&#128240;</div>
+    <h3>No articles in this category yet</h3>
+    <p>Check back soon or browse <a href="/">all articles</a>.</p>
+</section>
+{% endif %}
+{% endblock %}
