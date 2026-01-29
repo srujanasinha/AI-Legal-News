@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
@@ -24,100 +24,183 @@
                         <span class="tagline">Monitoring the AI + Law landscape</span>
                     </div>
                 </a>
-                <div class="header-stats">
-                    <span class="stat">5 articles</span>
-                    <span class="stat-sep">&middot;</span>
-                    <span class="stat">21 sources</span>
-                    <span class="stat-sep">&middot;</span>
-                    <span class="stat">12 categories</span>
+                <div class="header-actions">
+                    <div class="header-stats">
+                        <span class="stat-badge">5 articles</span>
+                        <span class="stat-badge">20 sources</span>
+                    </div>
+                    <button class="search-toggle" onclick="toggleSearch()" aria-label="Search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </button>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
                 </div>
             </div>
-            <nav class="category-nav">
-                <a href="/" class="nav-pill ">All</a>
-                
-                <a href="/category/regulation.html" class="nav-pill ">
-                    US Regulators
-                    <span class="pill-count">13</span>
+
+            <!-- Search bar (hidden by default) -->
+            <div class="search-bar" id="searchBar">
+                <input type="text" id="searchInput" placeholder="Search articles..." onkeyup="filterArticles()" autocomplete="off">
+                <button class="search-clear" onclick="clearSearch()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav" id="mainNav">
+                <a href="/" class="nav-link ">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Home
                 </a>
-                
-                <a href="/category/state-regulation.html" class="nav-pill ">
-                    State AGs
-                    <span class="pill-count">7</span>
+
+                <!-- Category Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger active">
+                        Categories
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-grid">
+                            
+                            <a href="/category/regulation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-regulation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">US Regulators</span>
+                                    <span class="dropdown-item-count">13 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/state-regulation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-state-regulation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">State AGs</span>
+                                    <span class="dropdown-item-count">7 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/international.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-international"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">International</span>
+                                    <span class="dropdown-item-count">13 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/law-firms.html" class="dropdown-item active">
+                                <span class="dropdown-dot dot-law-firms"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Law Firms</span>
+                                    <span class="dropdown-item-count">5 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/legal-analysis.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-legal-analysis"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Legal Analysis</span>
+                                    <span class="dropdown-item-count">9 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/legal-tech.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-legal-tech"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Legal Tech</span>
+                                    <span class="dropdown-item-count">10 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/policy.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-policy"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Policy</span>
+                                    <span class="dropdown-item-count">37 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/research-policy.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-research-policy"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Research</span>
+                                    <span class="dropdown-item-count">12 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/tech-news.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-tech-news"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Tech News</span>
+                                    <span class="dropdown-item-count">8 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/litigation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-litigation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Litigation</span>
+                                    <span class="dropdown-item-count">9 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/copyright-ip.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-copyright-ip"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Copyright &amp; IP</span>
+                                    <span class="dropdown-item-count">3 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/ethics.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-ethics"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Ethics &amp; Governance</span>
+                                    <span class="dropdown-item-count">3 articles</span>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/archive.html" class="nav-link ">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Archive
                 </a>
-                
-                <a href="/category/international.html" class="nav-pill ">
-                    International
-                    <span class="pill-count">13</span>
-                </a>
-                
-                <a href="/category/law-firms.html" class="nav-pill active">
-                    Law Firms
-                    <span class="pill-count">5</span>
-                </a>
-                
-                <a href="/category/legal-analysis.html" class="nav-pill ">
-                    Legal Analysis
-                    <span class="pill-count">9</span>
-                </a>
-                
-                <a href="/category/legal-tech.html" class="nav-pill ">
-                    Legal Tech
-                    <span class="pill-count">10</span>
-                </a>
-                
-                <a href="/category/policy.html" class="nav-pill ">
-                    Policy
-                    <span class="pill-count">36</span>
-                </a>
-                
-                <a href="/category/research-policy.html" class="nav-pill ">
-                    Research
-                    <span class="pill-count">12</span>
-                </a>
-                
-                <a href="/category/tech-news.html" class="nav-pill ">
-                    Tech News
-                    <span class="pill-count">10</span>
-                </a>
-                
-                <a href="/category/litigation.html" class="nav-pill ">
-                    Litigation
-                    <span class="pill-count">8</span>
-                </a>
-                
-                <a href="/category/copyright-ip.html" class="nav-pill ">
-                    Copyright &amp; IP
-                    <span class="pill-count">3</span>
-                </a>
-                
-                <a href="/category/ethics.html" class="nav-pill ">
-                    Ethics &amp; Governance
-                    <span class="pill-count">3</span>
-                </a>
-                
-                <a href="/archive.html" class="nav-pill ">Archive</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
         
-<section class="page-intro">
-    <div class="category-header">
-        <span class="tag tag-law-firms tag-lg">Law Firms</span>
-        <h2>Law Firms</h2>
+<section class="page-hero">
+    <div class="page-hero-top">
+        <a href="/" class="breadcrumb">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            All Articles
+        </a>
     </div>
-    <p class="subtitle">Commentary and analysis from major law firms</p>
-    <p class="article-count">5 articles in this category</p>
+    <div class="page-hero-content">
+        <span class="tag tag-lg tag-law-firms">Law Firms</span>
+        <h2 class="page-hero-title">Law Firms</h2>
+        <p class="page-hero-desc">Commentary and analysis from major law firms</p>
+        <div class="page-hero-stats">
+            <span class="stat-pill">5 articles</span>
+        </div>
+    </div>
 </section>
 
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 28, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 28, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -129,6 +212,13 @@
                 </a>
             </h4>
             <p class="article-summary">Continue Reading…</p>
+            <div class="article-footer">
+                <span class="article-date">January 28, 2026</span>
+                <a href="https://www.insideprivacy.com/data-privacy/european-data-protection-authorities-issue-joint-opinion-on-the-digital-omnibus-on-ai/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -136,10 +226,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 27, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 27, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -151,6 +246,13 @@
                 </a>
             </h4>
             <p class="article-summary">As 2026 gets underway, the European Union enters a pivotal year for data protection, AI governance, and cybersecurity regulation, among other matters. EU institutions and national authorities are expected to progress a number of significant digital‑policy files, roll‑out new cyber‑resilience…</p>
+            <div class="article-footer">
+                <span class="article-date">January 27, 2026</span>
+                <a href="https://www.insideprivacy.com/european-union-2/what-to-watch-in-2026-key-eu-privacy-cybersecurity-developments/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -158,10 +260,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 23, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 23, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -173,6 +280,13 @@
                 </a>
             </h4>
             <p class="article-summary">On 20 January 2026, the European Commission published a proposal for a Regulation to update and replace the Cybersecurity Act (Regulation 2019/881). The proposal—known as the Cybersecurity Act 2 (CSA2)—forms part of a wider package aimed at modernizing and streamlining the EU’s cybersecurity…</p>
+            <div class="article-footer">
+                <span class="article-date">January 23, 2026</span>
+                <a href="https://www.insideprivacy.com/cybersecurity-2/european-commission-proposes-cybersecurity-act-2-new-eu-supply-chain-rules-and-certification-reforms/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -180,10 +294,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 20, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 20, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -195,6 +314,13 @@
                 </a>
             </h4>
             <p class="article-summary">On January 8, 2026, the California Privacy Protection Agency (“CalPrivacy”) announced an enforcement action against Rickenbacher Data LLC (d/b/a “Datamasters”), an information reseller, for failing to register as a data broker under the California Delete Act. &amp;#160;Datamasters agreed to pay a…</p>
+            <div class="article-footer">
+                <span class="article-date">January 20, 2026</span>
+                <a href="https://www.insideprivacy.com/state-privacy/calprivacy-announces-45000-fine-against-data-broker-for-delete-act-violations/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -202,10 +328,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 02, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 02, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -217,6 +348,13 @@
                 </a>
             </h4>
             <p class="article-summary">On December 4, 2025, the German Federal Government published its Federal Modernization Agenda, setting out a series of suggested amendments to the GDPR and the Federal Data Protection Act (Bundesdatenschutzgesetz). Among the key measures, Germany seeks to shift certain responsibilities from users…</p>
+            <div class="article-footer">
+                <span class="article-date">January 02, 2026</span>
+                <a href="https://www.insideprivacy.com/european-union-2/german-government-proposes-gdpr-reform-to-shift-responsibility-to-manufacturers/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -229,11 +367,76 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-brand">AI Legal Tracker</p>
-            <p>Last updated: January 29, 2026 at 16:33 UTC</p>
-            <p>5 articles from 21 sources &middot; Updated daily via GitHub Actions</p>
-            <p class="footer-note">All content belongs to original publishers. Links open original sources.</p>
+            <div class="footer-inner">
+                <div class="footer-brand-section">
+                    <p class="footer-brand">&#9878; AI Legal Tracker</p>
+                    <p class="footer-desc">Automated daily digest of news from the intersection of AI and law.</p>
+                </div>
+                <div class="footer-meta">
+                    <p>Last updated: January 29, 2026 at 22:35 UTC</p>
+                    <p>5 articles &middot; 20 sources &middot; 12 categories</p>
+                    <p class="footer-note">All content belongs to original publishers. Links open original sources.</p>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+    // Search toggle
+    function toggleSearch() {
+        const bar = document.getElementById('searchBar');
+        bar.classList.toggle('open');
+        if (bar.classList.contains('open')) {
+            document.getElementById('searchInput').focus();
+        }
+    }
+
+    function clearSearch() {
+        document.getElementById('searchInput').value = '';
+        filterArticles();
+        toggleSearch();
+    }
+
+    function filterArticles() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.article-card');
+        const dateGroups = document.querySelectorAll('.date-group');
+
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = query === '' || text.includes(query) ? '' : 'none';
+        });
+
+        // Hide empty date groups
+        dateGroups.forEach(group => {
+            const visibleCards = group.querySelectorAll('.article-card:not([style*="display: none"])');
+            group.style.display = visibleCards.length === 0 ? 'none' : '';
+        });
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        document.getElementById('mainNav').classList.toggle('open');
+    }
+
+    // Dropdown - click to toggle on mobile, hover on desktop
+    document.querySelectorAll('.dropdown-trigger').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.closest('.nav-dropdown');
+            const isOpen = dropdown.classList.contains('open');
+            // Close all dropdowns first
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+            if (!isOpen) dropdown.classList.add('open');
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+        }
+    });
+    </script>
 </body>
 </html>

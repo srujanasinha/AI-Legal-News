@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
@@ -24,100 +24,221 @@
                         <span class="tagline">Monitoring the AI + Law landscape</span>
                     </div>
                 </a>
-                <div class="header-stats">
-                    <span class="stat">36 articles</span>
-                    <span class="stat-sep">&middot;</span>
-                    <span class="stat">21 sources</span>
-                    <span class="stat-sep">&middot;</span>
-                    <span class="stat">12 categories</span>
+                <div class="header-actions">
+                    <div class="header-stats">
+                        <span class="stat-badge">37 articles</span>
+                        <span class="stat-badge">20 sources</span>
+                    </div>
+                    <button class="search-toggle" onclick="toggleSearch()" aria-label="Search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </button>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
                 </div>
             </div>
-            <nav class="category-nav">
-                <a href="/" class="nav-pill ">All</a>
-                
-                <a href="/category/regulation.html" class="nav-pill ">
-                    US Regulators
-                    <span class="pill-count">13</span>
+
+            <!-- Search bar (hidden by default) -->
+            <div class="search-bar" id="searchBar">
+                <input type="text" id="searchInput" placeholder="Search articles..." onkeyup="filterArticles()" autocomplete="off">
+                <button class="search-clear" onclick="clearSearch()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav" id="mainNav">
+                <a href="/" class="nav-link ">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Home
                 </a>
-                
-                <a href="/category/state-regulation.html" class="nav-pill ">
-                    State AGs
-                    <span class="pill-count">7</span>
+
+                <!-- Category Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger active">
+                        Categories
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-grid">
+                            
+                            <a href="/category/regulation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-regulation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">US Regulators</span>
+                                    <span class="dropdown-item-count">13 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/state-regulation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-state-regulation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">State AGs</span>
+                                    <span class="dropdown-item-count">7 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/international.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-international"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">International</span>
+                                    <span class="dropdown-item-count">13 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/law-firms.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-law-firms"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Law Firms</span>
+                                    <span class="dropdown-item-count">5 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/legal-analysis.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-legal-analysis"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Legal Analysis</span>
+                                    <span class="dropdown-item-count">9 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/legal-tech.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-legal-tech"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Legal Tech</span>
+                                    <span class="dropdown-item-count">10 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/policy.html" class="dropdown-item active">
+                                <span class="dropdown-dot dot-policy"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Policy</span>
+                                    <span class="dropdown-item-count">37 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/research-policy.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-research-policy"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Research</span>
+                                    <span class="dropdown-item-count">12 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/tech-news.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-tech-news"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Tech News</span>
+                                    <span class="dropdown-item-count">8 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/litigation.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-litigation"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Litigation</span>
+                                    <span class="dropdown-item-count">9 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/copyright-ip.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-copyright-ip"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Copyright &amp; IP</span>
+                                    <span class="dropdown-item-count">3 articles</span>
+                                </div>
+                            </a>
+                            
+                            <a href="/category/ethics.html" class="dropdown-item ">
+                                <span class="dropdown-dot dot-ethics"></span>
+                                <div class="dropdown-item-text">
+                                    <span class="dropdown-item-label">Ethics &amp; Governance</span>
+                                    <span class="dropdown-item-count">3 articles</span>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/archive.html" class="nav-link ">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Archive
                 </a>
-                
-                <a href="/category/international.html" class="nav-pill ">
-                    International
-                    <span class="pill-count">13</span>
-                </a>
-                
-                <a href="/category/law-firms.html" class="nav-pill ">
-                    Law Firms
-                    <span class="pill-count">5</span>
-                </a>
-                
-                <a href="/category/legal-analysis.html" class="nav-pill ">
-                    Legal Analysis
-                    <span class="pill-count">9</span>
-                </a>
-                
-                <a href="/category/legal-tech.html" class="nav-pill ">
-                    Legal Tech
-                    <span class="pill-count">10</span>
-                </a>
-                
-                <a href="/category/policy.html" class="nav-pill active">
-                    Policy
-                    <span class="pill-count">36</span>
-                </a>
-                
-                <a href="/category/research-policy.html" class="nav-pill ">
-                    Research
-                    <span class="pill-count">12</span>
-                </a>
-                
-                <a href="/category/tech-news.html" class="nav-pill ">
-                    Tech News
-                    <span class="pill-count">10</span>
-                </a>
-                
-                <a href="/category/litigation.html" class="nav-pill ">
-                    Litigation
-                    <span class="pill-count">8</span>
-                </a>
-                
-                <a href="/category/copyright-ip.html" class="nav-pill ">
-                    Copyright &amp; IP
-                    <span class="pill-count">3</span>
-                </a>
-                
-                <a href="/category/ethics.html" class="nav-pill ">
-                    Ethics &amp; Governance
-                    <span class="pill-count">3</span>
-                </a>
-                
-                <a href="/archive.html" class="nav-pill ">Archive</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
         
-<section class="page-intro">
-    <div class="category-header">
-        <span class="tag tag-policy tag-lg">Policy</span>
-        <h2>Policy</h2>
+<section class="page-hero">
+    <div class="page-hero-top">
+        <a href="/" class="breadcrumb">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            All Articles
+        </a>
     </div>
-    <p class="subtitle">Think tank analysis, civil liberties, policy proposals</p>
-    <p class="article-count">36 articles in this category</p>
+    <div class="page-hero-content">
+        <span class="tag tag-lg tag-policy">Policy</span>
+        <h2 class="page-hero-title">Policy</h2>
+        <p class="page-hero-desc">Think tank analysis, civil liberties, policy proposals</p>
+        <div class="page-hero-stats">
+            <span class="stat-pill">37 articles</span>
+        </div>
+    </div>
 </section>
 
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 29, 2026</h3>
-        <span class="date-count">1 article</span>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 29, 2026</h3>
+        </div>
+        <span class="date-count">3 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
+        
+        <article class="article-card">
+            <div class="article-meta">
+                <span class="article-source">EFF</span>
+            </div>
+            <h4 class="article-title">
+                <a href="https://www.eff.org/deeplinks/2026/01/eff-close-friday-solidarity-national-shutdown" target="_blank" rel="noopener noreferrer">
+                    EFF to Close Friday in Solidarity with National Shutdown
+                </a>
+            </h4>
+            <p class="article-summary">The Electronic Frontier Foundation stands with the people of Minneapolis and with all of the communities impacted by the ongoing campaign of ICE and CBP violence. EFF will be closed Friday, Jan. 30 as part of the national shutdown in opposition to ICE and CBP and the brutality and terror they and…</p>
+            <div class="article-footer">
+                <span class="article-date">January 29, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/eff-close-friday-solidarity-national-shutdown" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </article>
+        
+        <article class="article-card">
+            <div class="article-meta">
+                <span class="article-source">EFF</span>
+            </div>
+            <h4 class="article-title">
+                <a href="https://www.eff.org/deeplinks/2026/01/introducing-encrypt-it-already" target="_blank" rel="noopener noreferrer">
+                    Introducing Encrypt It Already
+                </a>
+            </h4>
+            <p class="article-summary">Today, we’re launching Encrypt It Already, our push to get companies to offer stronger privacy protections to our data and communications by implementing end-to-end encryption. If that name sounds a little familiar, it’s because this is a spiritual successor to our 2019 campaign, Fix It Already, a…</p>
+            <div class="article-footer">
+                <span class="article-date">January 29, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/introducing-encrypt-it-already" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </article>
         
         <article class="article-card">
             <div class="article-meta">
@@ -129,6 +250,13 @@
                 </a>
             </h4>
             <p class="article-summary">Welcome back to the Centre for Democracy &amp;#38; Technology Europe’s Tech Policy Brief! This edition covers the most pressing technology and internet policy issues under debate in Europe and gives CDT’s perspective on the impact to digital rights. To sign up for CDT Europe’s AI newsletter, please…</p>
+            <div class="article-footer">
+                <span class="article-date">January 29, 2026</span>
+                <a href="https://cdt.org/insights/eu-tech-policy-brief-january-2026/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -136,10 +264,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 28, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 28, 2026</h3>
+        </div>
         <span class="date-count">2 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -151,6 +284,13 @@
                 </a>
             </h4>
             <p class="article-summary">In January, OpenAI and Anthropic both announced new AI products focused on health. These new large language model health tools offer the promise of empowering patients and promoting better health outcomes, but there are significant questions about their accuracy. Moreover, health data is some of…</p>
+            <div class="article-footer">
+                <span class="article-date">January 28, 2026</span>
+                <a href="https://cdt.org/insights/ai-health-tools-pose-risks-for-user-privacy/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -163,6 +303,13 @@
                 </a>
             </h4>
             <p class="article-summary">Lawmakers in Washington are once again focusing on kids, screens, and mental health. But according to Congress, Big Tech is somehow both the problem and the solution. We&#39;re diving into the latest attempt to control how kids access the internet and more with our latest EFFector newsletter. Since…</p>
+            <div class="article-footer">
+                <span class="article-date">January 28, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/bill-hand-parenting-big-tech-effector-382" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -170,10 +317,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 27, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 27, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -185,6 +337,13 @@
                 </a>
             </h4>
             <p class="article-summary">The start of 2026 is marked by mounting pressure points in EU AI policy: new rules on labelling AI-generated content, a deepening debate over sexual deepfakes, and sustained resistance to the Commission’s Omnibus Tech proposal. This month, we track where legal gaps are emerging and where rights…</p>
+            <div class="article-footer">
+                <span class="article-date">January 27, 2026</span>
+                <a href="https://cdt.org/insights/cdt-europes-ai-bulletin-january-2026/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -192,10 +351,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 26, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 26, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -207,6 +371,13 @@
                 </a>
             </h4>
             <p class="article-summary">Like so many others, I’ve been horrified by the violence perpetrated against Minnesotans in recent days, and I wanted to share how CDT is thinking about this critical moment. Since the beginning of January, ICE agents in MN have shot and killed two people who were observing the activities of…</p>
+            <div class="article-footer">
+                <span class="article-date">January 26, 2026</span>
+                <a href="https://cdt.org/insights/cdt-responds-to-violence-in-minnesota/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -214,10 +385,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 16, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 16, 2026</h3>
+        </div>
         <span class="date-count">2 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -229,6 +405,13 @@
                 </a>
             </h4>
             <p class="article-summary">The Baton Rouge Police Department announced this week that it will begin using a drone designed by military equipment manufacturer Lockheed Martin and Edge Autonomy, making it one of the first local police departments to use an unmanned aerial vehicle (UAV) with a history of primary use in foreign…</p>
+            <div class="article-footer">
+                <span class="article-date">January 16, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/baton-rouge-acquires-straight-military-surveillance-drone" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -241,6 +424,13 @@
                 </a>
             </h4>
             <p class="article-summary">Lawmakers in Washington are once again focusing on kids, screens, and mental health. But according to Congress, Big Tech is somehow both the problem and the solution. The Senate Commerce Committee held a hearing today on “examining the effect of technology on America’s youth.” Witnesses warned…</p>
+            <div class="article-footer">
+                <span class="article-date">January 16, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/congress-wants-hand-your-parenting-big-tech" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -248,10 +438,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 15, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 15, 2026</h3>
+        </div>
         <span class="date-count">3 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -263,6 +458,13 @@
                 </a>
             </h4>
             <p class="article-summary">EFF last summer asked a federal judge to block the federal government from using Medicaid data to identify and deport immigrants. We also warned about the danger of the Trump administration consolidating all of the government’s information into a single searchable, AI-driven interface with help…</p>
+            <div class="article-footer">
+                <span class="article-date">January 15, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/report-ice-using-palantir-tool-feeds-medicaid-data" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -275,6 +477,13 @@
                 </a>
             </h4>
             <p class="article-summary">The 2026 AI Impact Summit in India is the latest iteration of an event that has become a bellwether for global discourse around the AI industry, especially the question of whether, and how, it can be governed. But it also demonstrates how important ideas can be invoked in ways that dilute their…</p>
+            <div class="article-footer">
+                <span class="article-date">January 15, 2026</span>
+                <a href="https://ainowinstitute.org/publications/research/reframing-impact-ai-summit-2026" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -287,6 +496,13 @@
                 </a>
             </h4>
             <p class="article-summary">The 2026 AI Impact Summit in India is the latest iteration of an event that has become a bellwether for global discourse around the AI industry, especially the question of whether, and how, it can be governed. But it also demonstrates how important ideas can be invoked in ways that dilute their…</p>
+            <div class="article-footer">
+                <span class="article-date">January 15, 2026</span>
+                <a href="https://ainowinstitute.org/publications/reframing-impact-ai-summit-2026-launch-essay" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -294,10 +510,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 13, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 13, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -309,6 +530,13 @@
                 </a>
             </h4>
             <p class="article-summary">This episode considers whether today’s massive AI investment boom reflects real economic fundamentals or an unsustainable bubble, and how a potential crash could reshape AI policy, public sentiment, and narratives about the future that are embraced and advanced not only by Silicon Valley…</p>
+            <div class="article-footer">
+                <span class="article-date">January 13, 2026</span>
+                <a href="https://ainowinstitute.org/news/press/what-are-the-implications-if-the-ai-boom-turns-to-bust" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -316,10 +544,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 12, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 12, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -331,6 +564,13 @@
                 </a>
             </h4>
             <p class="article-summary">As millions of people prepare to head to the polls in Uganda on January, 15 2026, Access Now and the #KeepItOn coalition — a global network of over 345 organizations from 106 countries working to end internet shutdowns, has urged President Yoweri Museveni to ensure unfettered access to the…</p>
+            <div class="article-footer">
+                <span class="article-date">January 12, 2026</span>
+                <a href="https://www.accessnow.org/press-release/keepiton-coalition-raise-the-alarm-on-potential-shutdown-during-upcoming-elections-in-uganda/" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -338,10 +578,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 08, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 08, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -353,6 +598,13 @@
                 </a>
             </h4>
             <p class="article-summary">Read more about how ICE has spent hundreds of millions of dollars on surveillance technology to spy on anyone—and potentially everyone—in the United States, and how to follow the Homeland Security Spending Trail.. ICE has been invading U.S. cities, targeting, surveilling, harassing, assaulting,…</p>
+            <div class="article-footer">
+                <span class="article-date">January 08, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/how-hackers-are-fighting-back-against-ice" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -360,10 +612,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 07, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 07, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -375,6 +632,13 @@
                 </a>
             </h4>
             <p class="article-summary">Read more about how enterprising hackers have started projects to do counter surveillance against ICE, and learn how to follow the Homeland Security spending trail. U.S. Immigration and Customs Enforcement (ICE) has a new budget under the current administration, and they are going on a surveillance…</p>
+            <div class="article-footer">
+                <span class="article-date">January 07, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2026/01/ice-going-surveillance-shopping-spree" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -382,10 +646,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 06, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 06, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -397,6 +666,13 @@
                 </a>
             </h4>
             <p class="article-summary">This guide was co-written by Andrew Zuker with support from the Heinrich Boell Foundation. The U.S. government publishes volumes of detailed data on the money it spends, but searching through it and finding information can be challenging. Complex search functions and poor user interfaces on…</p>
+            <div class="article-footer">
+                <span class="article-date">January 06, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/homeland-security-spending-trail-how-follow-money-through-us-government-databases" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -404,10 +680,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>January 02, 2026</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>January 02, 2026</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -419,6 +700,13 @@
                 </a>
             </h4>
             <p class="article-summary">Our Surveillance Self-Defense (SSD) guides, which provide practical advice and explainers for how to deal with government and corporate surveillance, had a big year. We published several large updates to existing guides and released three all new guides. And with frequent massive protests across…</p>
+            <div class="article-footer">
+                <span class="article-date">January 02, 2026</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/surveillance-self-defense-2025-year-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -426,10 +714,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 30, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 30, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -441,6 +734,13 @@
                 </a>
             </h4>
             <p class="article-summary">Throughout 2025, EFF conducted groundbreaking investigations into Flock Safety&#39;s automated license plate reader (ALPR) network, revealing a system designed to enable mass surveillance and susceptible to grave abuses. Our research sparked state and federal investigations, drove landmark litigation,…</p>
+            <div class="article-footer">
+                <span class="article-date">December 30, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/effs-investigations-expose-flock-safetys-surveillance-abuses-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -448,10 +748,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 29, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 29, 2025</h3>
+        </div>
         <span class="date-count">3 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -463,6 +768,13 @@
                 </a>
             </h4>
             <p class="article-summary">It&#39;s no secret that digital surveillance and other tech-enabled oppressions are acute dangers for liberation movement workers. The rising tides of tech-fueled authoritarianism and hyper-surveillance are universal themes across the various threat models we consider. EFF&#39;s Surveillance Self-Defense…</p>
+            <div class="article-footer">
+                <span class="article-date">December 29, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/operations-security-opsec-trainings-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -475,6 +787,13 @@
                 </a>
             </h4>
             <p class="article-summary">EFF’s attorneys, activists, and technologists don’t just do the hard, endless work of defending our digital civil liberties — they also spend a lot of time and effort explaining that work to the public via media interviews. EFF had thousands of media mentions in 2025, from the smallest hyperlocal…</p>
+            <div class="article-footer">
+                <span class="article-date">December 29, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/eff-press-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -487,6 +806,13 @@
                 </a>
             </h4>
             <p class="article-summary">Drone as first responder (DFR) adoption really took off in 2025. Though the concept has been around since 2018, this year saw more normalization of the technology, its integration into more real-time crime center structures, and the implementation of automated deployment of drones. A DFR program…</p>
+            <div class="article-footer">
+                <span class="article-date">December 29, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/drone-first-responder-programs-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -494,10 +820,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 28, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 28, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -509,6 +840,13 @@
                 </a>
             </h4>
             <p class="article-summary">Defending encryption has long been a bedrock of our work. Without encryption, it&#39;s impossible to have private conversations or private data storage. This year, we’ve seen attacks on these rights from all around the world. Europe Goes All in On Breaking Encryption, Mostly Fails (For Now) The…</p>
+            <div class="article-footer">
+                <span class="article-date">December 28, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/defending-encryption-us-and-abroad-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -516,10 +854,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 27, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 27, 2025</h3>
+        </div>
         <span class="date-count">3 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -531,6 +874,13 @@
                 </a>
             </h4>
             <p class="article-summary">State and federal lawmakers have introduced multiple proposals in 2025 to curtail or outright block children and teenagers from accessing legal content on the internet. These lawmakers argue that internet and social media platforms have an obligation to censor or suppress speech that they consider…</p>
+            <div class="article-footer">
+                <span class="article-date">December 27, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/lawmakers-must-listen-young-people-regulating-their-internet-access-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -543,6 +893,13 @@
                 </a>
             </h4>
             <p class="article-summary">Across ideologically diverse communities, 2025 campaigns against automated license plate reader (ALPR) surveillance kept winning. From Austin, Texas to Cambridge, Massachusetts to Eugene, Oregon, successful campaigns combined three practical elements: a motivated political champion on city council,…</p>
+            <div class="article-footer">
+                <span class="article-date">December 27, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/local-communities-are-winning-against-alpr-surveillance-heres-how-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -555,6 +912,13 @@
                 </a>
             </h4>
             <p class="article-summary">State legislatures—from Olympia, WA, to Honolulu, HI, to Tallahassee, FL, and everywhere in between—kept EFF’s state legislative team busy throughout 2025. We saw some great wins and steps forward this year. Washington became the eighth state to enshrine the right to repair. Several states stepped…</p>
+            <div class="article-footer">
+                <span class="article-date">December 27, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/states-take-tough-tech-policy-battles-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -562,10 +926,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 24, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 24, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -577,6 +946,13 @@
                 </a>
             </h4>
             <p class="article-summary">Earlier this year, both chambers of Congress passed the TAKE IT DOWN Act. This bill, while well-intentioned, gives powerful people a new legal tool to force online platforms to remove lawful speech that they simply don&#39;t like. The bill, sponsored by Senate Commerce Chair Ted Cruz (R-TX) and Rep.…</p>
+            <div class="article-footer">
+                <span class="article-date">December 24, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/politicians-rushed-through-online-speech-solution-victims-deserve-better" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -584,10 +960,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 23, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 23, 2025</h3>
+        </div>
         <span class="date-count">3 articles</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -599,6 +980,13 @@
                 </a>
             </h4>
             <p class="article-summary">The world has been forced to bear the weight of billionaires and politicians who salivate over making tech more invasive, more controlling, and more hostile. That&#39;s why EFF’s mission for your digital rights is crucial, and why your support matters more than ever. You can fuel the fight for privacy…</p>
+            <div class="article-footer">
+                <span class="article-date">December 23, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/how-sustain-privacy-free-speech" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -611,6 +999,13 @@
                 </a>
             </h4>
             <p class="article-summary">In 2024, EFF wrote our initial blog about what could go wrong when police let AI write police reports. Since then, the technology has proliferated at a disturbing rate. Why? The most popular generative AI tool for writing police reports is Axon’s Draft One, and Axon also happens to be the largest…</p>
+            <div class="article-footer">
+                <span class="article-date">December 23, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/ai-police-reports-year-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
         <article class="article-card">
@@ -623,6 +1018,13 @@
                 </a>
             </h4>
             <p class="article-summary">The US legal profession was just one of the pillars of American democracy that was targeted in the early days of the second Trump administration. At EFF, we were proud to publicly and loudly support the legal profession and, most importantly, continue to do our work challenging the government’s…</p>
+            <div class="article-footer">
+                <span class="article-date">December 23, 2025</span>
+                <a href="https://www.eff.org/deeplinks/2025/12/fight-against-presidential-targeting-law-firms-2025-review" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -630,10 +1032,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 19, 2025</h3>
-        <span class="date-count">2 articles</span>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 19, 2025</h3>
+        </div>
+        <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -645,18 +1052,13 @@
                 </a>
             </h4>
             <p class="article-summary">We&amp;#8217;re hiring a skilled policy advocate to support community groups, organizers, and policymakers to identify and implement policy solutions to rampant data center growth. Read more about the job below and apply by January 23, 2026. The post AI Now is Hiring a Data Center Policy Fellow…</p>
-        </article>
-        
-        <article class="article-card">
-            <div class="article-meta">
-                <span class="article-source">EFF</span>
-            </div>
-            <h4 class="article-title">
-                <a href="https://www.eff.org/deeplinks/2025/12/speaking-freely-sami-ben-gharbia" target="_blank" rel="noopener noreferrer">
-                    Speaking Freely: Sami Ben Gharbia
+            <div class="article-footer">
+                <span class="article-date">December 19, 2025</span>
+                <a href="https://ainowinstitute.org/news/announcement/ai-now-is-hiring-a-data-center-policy-fellow" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
-            </h4>
-            <p class="article-summary">Interviewer: Jillian York Sami Ben Gharbia is a Tunisian human rights campaigner, blogger, writer and freedom of expression advocate. He founded Global Voices Advocacy, and is the co-founder and current publisher of the collective media organization Nawaat, which won the EFF Award in 2011. Jillian…</p>
+            </div>
         </article>
         
     </div>
@@ -664,10 +1066,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 08, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 08, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -679,6 +1086,13 @@
                 </a>
             </h4>
             <p class="article-summary">On Thursday, December 4, we held a launch event for the North Star Data Center Policy Toolkit—a guide for organizers and policymakers on how to use local and state policy to stop rampant AI data center expansion. The launch event—“North Star Interventions: Using Policy as an Organizing Tool in Our…</p>
+            <div class="article-footer">
+                <span class="article-date">December 08, 2025</span>
+                <a href="https://ainowinstitute.org/news/announcement/ai-now-hosts-report-launch-and-organizer-panel-on-using-policy-to-stop-data-center-expansion" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -686,10 +1100,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 04, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 04, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -701,6 +1120,13 @@
                 </a>
             </h4>
             <p class="article-summary">“The claims being made on these slides are quite concerning, and demonstrate an even more ambitious (and dangerous) use of AI than previously advertised, including the elimination of human intervention. It also cements that it is the DOE&amp;#8217;s strategy to use generative AI for nuclear purposes…</p>
+            <div class="article-footer">
+                <span class="article-date">December 04, 2025</span>
+                <a href="https://ainowinstitute.org/news/press/atoms-for-algorithms-the-trump-administrations-top-nuclear-scientists-think-ai-can-replace-humans-in-power-plants" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -708,10 +1134,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>December 03, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>December 03, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -723,6 +1154,13 @@
                 </a>
             </h4>
             <p class="article-summary">This policy toolkit is primarily geared toward stopping, slowing, and restricting rampant data center development in the US at the local and state level. Our approach recognizes the extractive relationship between data centers and local communities: Hyperscale data centers deplete scarce natural…</p>
+            <div class="article-footer">
+                <span class="article-date">December 03, 2025</span>
+                <a href="https://ainowinstitute.org/publications/data-center-policy-guide" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -730,10 +1168,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>November 14, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>November 14, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -745,6 +1188,13 @@
                 </a>
             </h4>
             <p class="article-summary">Both Guerra and Khlaaf are proponents of nuclear energy, but worry that the proliferation of LLMs, the fast tracking of nuclear licenses, and the AI-driven push to build more plants is dangerous. “Nuclear energy is safe. It is safe, as we use it. But it’s safe because we make it safe and it’s safe…</p>
+            <div class="article-footer">
+                <span class="article-date">November 14, 2025</span>
+                <a href="https://ainowinstitute.org/news/press/power-companies-are-using-ai-to-build-nuclear-power-plants" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -752,10 +1202,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>November 13, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>November 13, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -767,6 +1222,13 @@
                 </a>
             </h4>
             <p class="article-summary">Is an artificial-intelligence bubble about to pop? The question of whether we’re in for a replay of the 2008 housing collapse—complete with bailouts at taxpayers’ expense—has saturated the news cycle. For every day that passes without disaster, AI companies can more persuasively insist that no such…</p>
+            <div class="article-footer">
+                <span class="article-date">November 13, 2025</span>
+                <a href="https://ainowinstitute.org/news/you-may-already-be-bailing-out-the-ai-business" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -774,10 +1236,15 @@
 
 <section class="date-group">
     <div class="date-heading">
-        <h3>November 11, 2025</h3>
+        <div class="date-heading-left">
+            <span class="date-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <h3>November 11, 2025</h3>
+        </div>
         <span class="date-count">1 article</span>
     </div>
-    <div class="article-list">
+    <div class="article-grid">
         
         <article class="article-card">
             <div class="article-meta">
@@ -789,6 +1256,13 @@
                 </a>
             </h4>
             <p class="article-summary">A report examining nuclear “fast-tracking” initiatives on their feasibility and their impact on nuclear safety, security, and safeguards. The post Fission for Algorithms: The Undermining of Nuclear Regulation in Service of AI appeared first on AI Now Institute.</p>
+            <div class="article-footer">
+                <span class="article-date">November 11, 2025</span>
+                <a href="https://ainowinstitute.org/publications/fission-for-algorithms" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </article>
         
     </div>
@@ -801,11 +1275,76 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p class="footer-brand">AI Legal Tracker</p>
-            <p>Last updated: January 29, 2026 at 16:33 UTC</p>
-            <p>36 articles from 21 sources &middot; Updated daily via GitHub Actions</p>
-            <p class="footer-note">All content belongs to original publishers. Links open original sources.</p>
+            <div class="footer-inner">
+                <div class="footer-brand-section">
+                    <p class="footer-brand">&#9878; AI Legal Tracker</p>
+                    <p class="footer-desc">Automated daily digest of news from the intersection of AI and law.</p>
+                </div>
+                <div class="footer-meta">
+                    <p>Last updated: January 29, 2026 at 22:35 UTC</p>
+                    <p>37 articles &middot; 20 sources &middot; 12 categories</p>
+                    <p class="footer-note">All content belongs to original publishers. Links open original sources.</p>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+    // Search toggle
+    function toggleSearch() {
+        const bar = document.getElementById('searchBar');
+        bar.classList.toggle('open');
+        if (bar.classList.contains('open')) {
+            document.getElementById('searchInput').focus();
+        }
+    }
+
+    function clearSearch() {
+        document.getElementById('searchInput').value = '';
+        filterArticles();
+        toggleSearch();
+    }
+
+    function filterArticles() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.article-card');
+        const dateGroups = document.querySelectorAll('.date-group');
+
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = query === '' || text.includes(query) ? '' : 'none';
+        });
+
+        // Hide empty date groups
+        dateGroups.forEach(group => {
+            const visibleCards = group.querySelectorAll('.article-card:not([style*="display: none"])');
+            group.style.display = visibleCards.length === 0 ? 'none' : '';
+        });
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        document.getElementById('mainNav').classList.toggle('open');
+    }
+
+    // Dropdown - click to toggle on mobile, hover on desktop
+    document.querySelectorAll('.dropdown-trigger').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.closest('.nav-dropdown');
+            const isOpen = dropdown.classList.contains('open');
+            // Close all dropdowns first
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+            if (!isOpen) dropdown.classList.add('open');
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+        }
+    });
+    </script>
 </body>
 </html>

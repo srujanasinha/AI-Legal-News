@@ -32,6 +32,8 @@ OUTPUT_DIR = ROOT_DIR / "docs"
 FEEDS_FILE = DATA_DIR / "feeds.json"
 SEEN_FILE = DATA_DIR / "seen_articles.json"
 
+BASE_URL = "/AI-Legal-News"  # GitHub Pages subdirectory path (no trailing slash)
+
 MAX_ARTICLE_AGE_DAYS = 90
 MAX_ARTICLES_HOMEPAGE = 80
 MAX_SUMMARY_LENGTH = 300
@@ -403,6 +405,7 @@ def build_site(articles: list[dict]) -> None:
     (OUTPUT_DIR / "img").mkdir(exist_ok=True)
 
     shared = dict(
+        base_url=BASE_URL,
         categories=CATEGORIES,
         category_counts=category_counts,
         build_time=build_time,
