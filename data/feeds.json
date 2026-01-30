@@ -2,389 +2,68 @@
   "ai_keywords": ["ai", "artificial intelligence", "algorithm", "automated", "machine learning", "deepfake", "generative ai", "large language model", "llm", "neural network", "chatbot", "gpt", "openai", "anthropic", "copilot"],
   "legal_keywords": ["law", "legal", "regulation", "sued", "lawsuit", "court", "ruling", "legislation", "ftc", "copyright", "patent", "policy", "compliance", "enforcement", "attorney general", "settlement", "privacy", "governance"],
   "feeds": [
-    {
-      "name": "FTC Consumer Protection",
-      "url": "https://www.ftc.gov/feeds/press-release-consumer-protection.xml",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "FTC Business Blog",
-      "url": "https://www.ftc.gov/feeds/business-blog.xml",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "FTC Tech Blog",
-      "url": "https://www.ftc.gov/feeds/tech-ftc.xml",
-      "category": "regulation",
-      "keywords": []
-    },
-    {
-      "name": "NIST AI",
-      "url": "https://www.nist.gov/rss/all/ai.rss",
-      "category": "regulation",
-      "keywords": []
-    },
-    {
-      "name": "NIST News",
-      "url": "https://www.nist.gov/news-events/news/rss.xml",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "US Copyright Office",
-      "url": "https://www.copyright.gov/rss/news.xml",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "SEC Press Releases",
-      "url": "https://www.sec.gov/news/pressreleases.rss",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "CFPB Newsroom",
-      "url": "https://www.consumerfinance.gov/about-us/newsroom/feed/",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "DOJ Public Affairs",
-      "url": "https://www.justice.gov/feeds/opa/justice-news.xml",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "USPTO Blog",
-      "url": "https://www.uspto.gov/blog/feed",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "White House OSTP",
-      "url": "https://www.whitehouse.gov/ostp/feed/",
-      "category": "regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "The AI Act Blog",
-      "url": "https://theaiact.blog/feed/",
-      "category": "regulation",
-      "keywords": []
-    },
-    {
-      "name": "California AG",
-      "url": "https://oag.ca.gov/news/feed",
-      "category": "state-regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "Colorado AG",
-      "url": "https://coag.gov/feed/",
-      "category": "state-regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "New York AG",
-      "url": "https://ag.ny.gov/rss.xml",
-      "category": "state-regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "Illinois AG",
-      "url": "https://www.illinoisattorneygeneral.gov/rss/news.xml",
-      "category": "state-regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "Texas AG",
-      "url": "https://www.texasattorneygeneral.gov/news/feeds",
-      "category": "state-regulation",
-      "keywords": "ai"
-    },
-    {
-      "name": "European Commission Digital",
-      "url": "https://digital-strategy.ec.europa.eu/en/rss.xml",
-      "category": "international",
-      "keywords": "ai"
-    },
-    {
-      "name": "UK ICO News",
-      "url": "https://ico.org.uk/about-the-ico/media-centre/rss-feeds/",
-      "category": "international",
-      "keywords": "ai"
-    },
-    {
-      "name": "CNIL (France)",
-      "url": "https://www.cnil.fr/en/rss.xml",
-      "category": "international",
-      "keywords": "ai"
-    },
-    {
-      "name": "EDPB",
-      "url": "https://www.edpb.europa.eu/rss.xml",
-      "category": "international",
-      "keywords": "ai"
-    },
-    {
-      "name": "BfDI (Germany)",
-      "url": "https://www.bfdi.bund.de/SiteGlobals/Functions/RSSFeed/RSSNewsfeed/RSSNewsfeed_news.xml",
-      "category": "international",
-      "keywords": "ai"
-    },
-    {
-      "name": "OECD AI Policy",
-      "url": "https://oecd.ai/en/feed",
-      "category": "international",
-      "keywords": []
-    },
-    {
-      "name": "UNESCO AI",
-      "url": "https://www.unesco.org/en/rss/artificial-intelligence.xml",
-      "category": "international",
-      "keywords": []
-    },
-    {
-      "name": "World Economic Forum AI",
-      "url": "https://www.weforum.org/topics/artificial-intelligence/feed",
-      "category": "international",
-      "keywords": "legal"
-    },
-    {
-      "name": "AI Singapore",
-      "url": "https://aisingapore.org/feed/",
-      "category": "international",
-      "keywords": "legal"
-    },
-    {
-      "name": "Gibson Dunn - AI",
-      "url": "https://www.gibsondunn.com/category/artificial-intelligence/feed/",
-      "category": "law-firms",
-      "keywords": []
-    },
-    {
-      "name": "Covington Inside Privacy",
-      "url": "https://www.insideprivacy.com/feed/",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Morrison Foerster",
-      "url": "https://www.mofo.com/rss/insights",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Hogan Lovells Engage",
-      "url": "https://www.engage.hoganlovells.com/knowledgeservices/feed/",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "DLA Piper Tech",
-      "url": "https://www.dlapiper.com/en/rss/insights",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Baker McKenzie",
-      "url": "https://www.bakermckenzie.com/en/insights/feed",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Perkins Coie Tech Risk",
-      "url": "https://www.techriskreport.com/feed/",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Hunton Privacy Blog",
-      "url": "https://www.huntonprivacyblog.com/feed/",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Foley & Lardner AI",
-      "url": "https://www.foley.com/insights/feed/?topic=artificial-intelligence",
-      "category": "law-firms",
-      "keywords": []
-    },
-    {
-      "name": "Orrick Tech",
-      "url": "https://www.orrick.com/en/Insights/feed",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Wilson Sonsini",
-      "url": "https://www.wsgr.com/en/insights/rss.xml",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Sidley Austin",
-      "url": "https://www.sidley.com/en/insights/rss",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "Skadden Insights",
-      "url": "https://www.skadden.com/insights/rss",
-      "category": "law-firms",
-      "keywords": "ai"
-    },
-    {
-      "name": "JD Supra - AI",
-      "url": "https://www.jdsupra.com/topics/artificial-intelligence/feed/",
-      "category": "legal-analysis",
-      "keywords": []
-    },
-    {
-      "name": "National Law Review - AI",
-      "url": "https://natlawreview.com/category/artificial-intelligence/feed",
-      "category": "legal-analysis",
-      "keywords": []
-    },
-    {
-      "name": "Law.com AI",
-      "url": "https://www.law.com/topics/artificial-intelligence/feed/",
-      "category": "legal-analysis",
-      "keywords": []
-    },
-    {
-      "name": "Lawfare",
-      "url": "https://www.lawfaremedia.org/feed",
-      "category": "legal-analysis",
-      "keywords": "ai"
-    },
-    {
-      "name": "TechLaw Crossroads",
-      "url": "https://techlawcrossroads.com/feed/",
-      "category": "legal-analysis",
-      "keywords": []
-    },
-    {
-      "name": "Artificial Lawyer",
-      "url": "https://www.artificiallawyer.com/feed/",
-      "category": "legal-tech",
-      "keywords": []
-    },
-    {
-      "name": "IAPP News",
-      "url": "https://iapp.org/news/rss/",
-      "category": "policy",
-      "keywords": "ai"
-    },
-    {
-      "name": "Future of Life Institute",
-      "url": "https://futureoflife.org/feed/",
-      "category": "policy",
-      "keywords": "legal"
-    },
-    {
-      "name": "Brookings AI",
-      "url": "https://www.brookings.edu/topic/artificial-intelligence/feed/",
-      "category": "policy",
-      "keywords": []
-    },
-    {
-      "name": "Center for AI Safety",
-      "url": "https://www.safe.ai/feed",
-      "category": "policy",
-      "keywords": "legal"
-    },
-    {
-      "name": "AI Now Institute",
-      "url": "https://ainowinstitute.org/feed",
-      "category": "policy",
-      "keywords": []
-    },
-    {
-      "name": "EFF",
-      "url": "https://www.eff.org/rss/updates.xml",
-      "category": "policy",
-      "keywords": "ai"
-    },
-    {
-      "name": "Access Now",
-      "url": "https://www.accessnow.org/feed/",
-      "category": "policy",
-      "keywords": "ai"
-    },
-    {
-      "name": "CDT",
-      "url": "https://cdt.org/feed/",
-      "category": "policy",
-      "keywords": "ai"
-    },
-    {
-      "name": "Stanford HAI",
-      "url": "https://hai.stanford.edu/news/rss.xml",
-      "category": "research-policy",
-      "keywords": []
-    },
-    {
-      "name": "MIT Tech Review AI",
-      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
-      "category": "research-policy",
-      "keywords": "legal"
-    },
-    {
-      "name": "CSET Georgetown",
-      "url": "https://cset.georgetown.edu/feed/",
-      "category": "research-policy",
-      "keywords": []
-    },
-    {
-      "name": "Rand AI Policy",
-      "url": "https://www.rand.org/topics/artificial-intelligence.xml",
-      "category": "research-policy",
-      "keywords": "legal"
-    },
-    {
-      "name": "Reuters Legal",
-      "url": "https://www.reuters.com/legal/rss",
-      "category": "tech-news",
-      "keywords": "ai"
-    },
-    {
-      "name": "TechCrunch AI",
-      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
-      "category": "tech-news",
-      "keywords": "legal"
-    },
-    {
-      "name": "Wired AI",
-      "url": "https://www.wired.com/feed/tag/ai/latest/rss",
-      "category": "tech-news",
-      "keywords": "legal"
-    },
-    {
-      "name": "VentureBeat AI",
-      "url": "https://venturebeat.com/category/ai/feed/",
-      "category": "tech-news",
-      "keywords": "legal"
-    },
-    {
-      "name": "The Verge AI",
-      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
-      "category": "tech-news",
-      "keywords": "legal"
-    },
-    {
-      "name": "Ars Technica Policy",
-      "url": "https://feeds.arstechnica.com/arstechnica/tech-policy",
-      "category": "tech-news",
-      "keywords": "ai"
-    },
-    {
-      "name": "The Register AI",
-      "url": "https://www.theregister.com/software/ai/headlines.atom",
-      "category": "tech-news",
-      "keywords": "legal"
-    }
+
+    {"name": "NIST News",                      "url": "https://www.nist.gov/news-events/news/rss.xml",                          "category": "regulation",      "keywords": "ai"},
+    {"name": "SEC Press Releases",              "url": "https://www.sec.gov/news/pressreleases.rss",                             "category": "regulation",      "keywords": "ai"},
+    {"name": "CFPB Newsroom",                   "url": "https://www.consumerfinance.gov/about-us/newsroom/feed/",                "category": "regulation",      "keywords": "ai"},
+    {"name": "GAO Reports",                     "url": "https://www.gao.gov/rss/reports.xml",                                    "category": "regulation",      "keywords": "ai"},
+    {"name": "Nextgov/FCW AI",                  "url": "https://www.nextgov.com/rss/artificial-intelligence/",                   "category": "regulation",      "keywords": []},
+    {"name": "Congress.gov Bills",              "url": "https://www.congress.gov/rss/most-viewed-bills.xml",                     "category": "regulation",      "keywords": "ai"},
+    {"name": "US Copyright Office",             "url": "https://www.copyright.gov/rss/newsnet.xml",                              "category": "regulation",      "keywords": "ai"},
+
+    {"name": "California AG",                   "url": "https://oag.ca.gov/news/feed",                                           "category": "state-regulation", "keywords": "ai"},
+    {"name": "Colorado AG",                     "url": "https://coag.gov/feed/",                                                  "category": "state-regulation", "keywords": "ai"},
+    {"name": "NAAG",                            "url": "https://www.naag.org/feed/",                                              "category": "state-regulation", "keywords": "ai"},
+
+    {"name": "European Commission Digital",     "url": "https://digital-strategy.ec.europa.eu/en/rss.xml",                       "category": "international",   "keywords": "ai"},
+    {"name": "CNIL (France)",                   "url": "https://www.cnil.fr/en/rss.xml",                                         "category": "international",   "keywords": "ai"},
+    {"name": "EDPB",                            "url": "https://www.edpb.europa.eu/rss.xml",                                     "category": "international",   "keywords": "ai"},
+    {"name": "EU AI Act Blog",                  "url": "https://artificialintelligenceact.eu/feed/",                              "category": "international",   "keywords": []},
+    {"name": "AlgorithmWatch",                  "url": "https://algorithmwatch.org/en/feed/",                                     "category": "international",   "keywords": []},
+    {"name": "The Diplomat AI",                 "url": "https://thediplomat.com/tag/artificial-intelligence/feed/",               "category": "international",   "keywords": []},
+    {"name": "AI Singapore",                    "url": "https://aisingapore.org/feed/",                                           "category": "international",   "keywords": "legal"},
+
+    {"name": "Gibson Dunn",                     "url": "https://www.gibsondunn.com/feed/",                                        "category": "law-firms",       "keywords": "ai"},
+    {"name": "Covington Inside Privacy",        "url": "https://www.insideprivacy.com/feed/",                                     "category": "law-firms",       "keywords": "ai"},
+    {"name": "Foley & Lardner AI",              "url": "https://www.foley.com/insights/feed/?topic=artificial-intelligence",       "category": "law-firms",       "keywords": []},
+    {"name": "Privacy World (Greenberg Traurig)", "url": "https://www.privacyworld.blog/feed/",                                   "category": "law-firms",       "keywords": "ai"},
+    {"name": "Debevoise Data Blog",             "url": "https://www.debevoisedatablog.com/feed/",                                 "category": "law-firms",       "keywords": []},
+
+    {"name": "TechLaw Crossroads",              "url": "https://techlawcrossroads.com/feed/",                                     "category": "legal-analysis",  "keywords": []},
+    {"name": "National Law Review",             "url": "https://www.natlawreview.com/feed",                                       "category": "legal-analysis",  "keywords": "ai"},
+    {"name": "Above the Law",                   "url": "https://abovethelaw.com/feed/",                                           "category": "legal-analysis",  "keywords": "ai"},
+    {"name": "IPWatchdog",                      "url": "https://ipwatchdog.com/feed/",                                            "category": "legal-analysis",  "keywords": "ai"},
+    {"name": "Patently-O",                      "url": "https://www.patentlyo.com/patent/atom.xml",                               "category": "legal-analysis",  "keywords": "ai"},
+    {"name": "Eric Goldman Tech Law Blog",      "url": "https://blog.ericgoldman.org/feed",                                       "category": "legal-analysis",  "keywords": "ai"},
+    {"name": "Techdirt",                        "url": "https://www.techdirt.com/feed/",                                          "category": "legal-analysis",  "keywords": "ai"},
+
+    {"name": "Artificial Lawyer",               "url": "https://www.artificiallawyer.com/feed/",                                  "category": "legal-tech",      "keywords": []},
+    {"name": "LawNext",                         "url": "https://www.lawnext.com/feed",                                            "category": "legal-tech",      "keywords": []},
+
+    {"name": "Future of Life Institute",        "url": "https://futureoflife.org/feed/",                                          "category": "policy",          "keywords": "legal"},
+    {"name": "AI Now Institute",                "url": "https://ainowinstitute.org/feed",                                         "category": "policy",          "keywords": []},
+    {"name": "EFF",                             "url": "https://www.eff.org/rss/updates.xml",                                     "category": "policy",          "keywords": "ai"},
+    {"name": "Access Now",                      "url": "https://www.accessnow.org/feed/",                                         "category": "policy",          "keywords": "ai"},
+    {"name": "CDT",                             "url": "https://cdt.org/feed/",                                                   "category": "policy",          "keywords": "ai"},
+    {"name": "Future of Privacy Forum",         "url": "https://fpf.org/feed/",                                                   "category": "policy",          "keywords": "ai"},
+    {"name": "ACLU",                            "url": "https://www.aclu.org/feed",                                               "category": "policy",          "keywords": "ai"},
+
+    {"name": "MIT Tech Review AI",              "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",      "category": "research-policy", "keywords": "legal"},
+    {"name": "CSET Georgetown",                 "url": "https://cset.georgetown.edu/feed/",                                       "category": "research-policy", "keywords": []},
+    {"name": "Rand AI Policy",                  "url": "https://www.rand.org/topics/artificial-intelligence.xml",                  "category": "research-policy", "keywords": "legal"},
+
+    {"name": "TechCrunch AI",                   "url": "https://techcrunch.com/category/artificial-intelligence/feed/",            "category": "tech-news",       "keywords": "legal"},
+    {"name": "Wired AI",                        "url": "https://www.wired.com/feed/tag/ai/latest/rss",                             "category": "tech-news",       "keywords": "legal"},
+    {"name": "VentureBeat AI",                  "url": "https://venturebeat.com/category/ai/feed/",                                "category": "tech-news",       "keywords": "legal"},
+    {"name": "The Verge AI",                    "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",         "category": "tech-news",       "keywords": "legal"},
+    {"name": "Ars Technica Policy",             "url": "https://feeds.arstechnica.com/arstechnica/tech-policy",                    "category": "tech-news",       "keywords": "ai"},
+    {"name": "IEEE Spectrum AI",                "url": "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",         "category": "tech-news",       "keywords": []},
+    {"name": "AI News",                         "url": "https://www.artificialintelligence-news.com/feed/",                        "category": "tech-news",       "keywords": []},
+    {"name": "Google AI Blog",                  "url": "https://blog.google/technology/ai/rss/",                                   "category": "tech-news",       "keywords": []},
+    {"name": "OpenAI Blog",                     "url": "https://openai.com/blog/rss.xml",                                          "category": "tech-news",       "keywords": []},
+    {"name": "Schneier on Security",            "url": "https://www.schneier.com/feed/atom/",                                      "category": "tech-news",       "keywords": "ai"},
+    {"name": "BBC News Technology",             "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",                         "category": "tech-news",       "keywords": "ai"},
+    {"name": "CNBC Technology",                 "url": "https://www.cnbc.com/id/19854910/device/rss/rss.html",                     "category": "tech-news",       "keywords": "ai"},
+    {"name": "The Hill",                        "url": "https://thehill.com/feed/",                                                "category": "tech-news",       "keywords": "ai"}
   ]
 }
