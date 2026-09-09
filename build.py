@@ -293,10 +293,17 @@ def save_seen_articles(seen: dict) -> None:
     cutoff = (
         datetime.now(timezone.utc) - timedelta(days=MAX_ARTICLE_AGE_DAYS)
     ).isoformat()
-    pruned = {aid: ts for aid, ts in seen.items() if ts >= cutoff}
+    pruned = {
+        aid: val for aid, val in seen.items()
+        if (val if isinstance(val, str) else val.get("first_seen", "")) >= cutoff
+    }
     if len(pruned) > MAX_SEEN_ENTRIES:
         pruned = dict(
-            sorted(pruned.items(), key=lambda x: x[1], reverse=True)[:MAX_SEEN_ENTRIES]
+            sorted(
+                pruned.items(),
+                key=lambda x: x[1] if isinstance(x[1], str) else x[1].get("first_seen", ""),
+                reverse=True,
+            )[:MAX_SEEN_ENTRIES]
         )
     with open(SEEN_FILE, "w") as f:
         json.dump(pruned, f, indent=2)
@@ -490,12 +497,20 @@ def main() -> None:
     all_articles = deduplicate(all_articles)
     logger.info("%d articles after dedup", len(all_articles))
 
-    # Update seen tracking
+    # Restore original published dates for already-seen articles,
+    # so feeds that refresh their 'updated' timestamp don't shift article dates.
     seen = load_seen_articles()
     now_iso = datetime.now(timezone.utc).isoformat()
     for article in all_articles:
-        if article["id"] not in seen:
-            seen[article["id"]] = now_iso
+        stored = seen.get(article["id"])
+        if stored is None:
+            seen[article["id"]] = {"first_seen": now_iso, "published": article["published_iso"]}
+        else:
+            if isinstance(stored, dict) and stored.get("published"):
+                original = datetime.fromisoformat(stored["published"])
+                article["published"] = original
+                article["published_str"] = original.strftime("%B %d, %Y")
+                article["published_iso"] = stored["published"]
     save_seen_articles(seen)
 
     # Build
